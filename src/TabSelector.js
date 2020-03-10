@@ -1,47 +1,37 @@
-import React, { Component } from 'react';
 
-class TabSelector extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeId: 'home'
-    };
-    this.handleChangeTab = this.handleChangeTab.bind(this);
-  }
+import React from "react";
 
-  handleChangeTab(event) {
-    const buttonId = event.target.id;
-    this.setState({ activeId: buttonId });
-  }
+const TabSelector = ({ activeId, setActiveId }) => {
+  const handleChangeTab = e => {
+    const buttonId = e.target.id;
+    setActiveId(buttonId);
+  };
 
-  render() {
-    const { activeId } = this.state;
-    return (
-      <div className="TabSelector">
-        <button
-          id="home"
-          onClick={this.handleChangeTab}
-          className={activeId === 'home' ? 'active' : ''}
-        >
-          Home
-        </button>
-        <button
-          id="about"
-          onClick={this.handleChangeTab}
-          className={activeId === 'about' ? 'active' : ''}
-        >
-          About
-        </button>
-        <button
-          id="contact"
-          onClick={this.handleChangeTab}
-          className={activeId === 'contact' ? 'active' : ''}
-        >
-          Contact
-        </button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="TabSelector">
+      <button
+        id="home"
+        onClick={handleChangeTab}
+        className={activeId === "home" ? "active" : ""}
+      >
+        Home
+      </button>
+      <button
+        id="about"
+        onClick={handleChangeTab}
+        className={activeId === "about" ? "active" : ""}
+      >
+        About
+      </button>
+      <button
+        id="contact"
+        onClick={handleChangeTab}
+        className={activeId === "contact" ? "active" : ""}
+      >
+        Contact
+      </button>
+    </div>
+  );
+};
 
 export default TabSelector;
